@@ -1,0 +1,13 @@
+*{
+    margin: 0%;
+    padding: 0;
+}
+
+.verPdf{
+    margin-top: 50px;
+    text-align: center;
+}
+.pdf{
+    width:1000px;
+    height:700px;
+}
