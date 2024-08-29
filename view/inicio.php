@@ -1,23 +1,21 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="assets/css/estiloinicio.css">
+    <link rel="stylesheet" href="../assets/css/estiloinicio.css">
 </head>
 <body>
 <?php 
-    require('includes/funciones.php');    
+    require('../includes/funciones.php');    
     incluirTemplate('header');
 ?>
     <main>
         <div class="container">
             <div class="card">
                 <figure>
-                    <img src="assets/images/bg2.jpg" >
+                    <img src="../assets/images/bg2.jpg" >
                 </figure>
                 <div class="contenido">
                     <h3>Ofimatica</h3>
@@ -30,7 +28,7 @@
             </div>
             <div class="card">
                 <figure>
-                    <img src="assets/images/bg3.jpg">
+                    <img src="../assets/images/bg3.jpg">
                 </figure>
                 <div class="contenido">
                     <h3>Ofimatica</h3>
@@ -43,7 +41,7 @@
             </div>
             <div class="card">
                 <figure>
-                    <img src="assets/images/bg4.jpg">
+                    <img src="../assets/images/bg4.jpg">
                 </figure>
                 <div class="contenido">
                     <h3>Ofimatica</h3>
@@ -56,7 +54,7 @@
             </div>
             <div class="card">
                 <figure>
-                    <img src="assets/images/bg2.jpg">
+                    <img src="../assets/images/bg2.jpg">
                 </figure>
                 <div class="contenido">
                     <h3>Ofimatica</h3>

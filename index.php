@@ -22,9 +22,12 @@
                     <h3 class="login-heading mb-4">Login de usuario</h3>
       
                     <!-- Sign In Form -->
-                    <form action="servidor/login/logear.php" method="post">
+                    <form action="" method="post">
+                      <?php 
+                        include("controller/login_user.php");
+                      ?>
                       <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Usuario">
+                        <input type="text" class="form-control" name="user" id="user" placeholder="Usuario">
                         <label for="usuario">Usuario</label>
                       </div>
                       <div class="form-floating mb-3">
@@ -32,12 +35,11 @@
                         <label for="password">Password</label>
                       </div>
                       <div class="d-grid">
-                        <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Entrar</button>
-                        <div class="text-center">
+                        <input name="btn_login" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" value="ENTRAR">
+                        <!--  <div class="text-center">
                           <a class="small" href="registro.php">Registrate aqui!</a>
-                        </div>
+                        </div>  -->
                       </div>
-      
                     </form>
                   </div>
                 </div>

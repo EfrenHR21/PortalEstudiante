@@ -13,7 +13,7 @@ function conectarDB2()
     $dbHost = 'localhost'; // Puede ser 'localhost' si estás usando XAMPP o WAMP
     $dbUsuario = 'root';
     $dbPassword = '';
-    $dbName = '';
+    $dbName = 'bdportal';
 	    // Crear una conexión
     $db = mysqli_connect($dbHost, $dbUsuario, $dbPassword, $dbName);
 
