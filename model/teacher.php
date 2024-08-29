@@ -17,7 +17,6 @@ class teacher{
             return false;
         }
     } 
-
     public function setTeacher($user){
         $db = new db();
         $connection = $db->connect();
