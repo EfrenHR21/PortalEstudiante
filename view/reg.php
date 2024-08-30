@@ -1,4 +1,18 @@
+
 <!DOCTYPE html>
+<?php
+require('../includes/funciones.php'); 
+
+$tmp = array();
+$res = array();
+
+$sel = $con->query("SELECT * FROM files");
+while ($row = $sel->fetch_assoc()) {
+    $tmp = $row;
+    array_push($res, $tmp);
+}
+?>
+
 <html lang="en">
     <html>
         <head>
@@ -7,8 +21,7 @@
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         </head>
         <body>
-        <?php 
-            require('../includes/funciones.php');    
+        <?php  
             incluirTemplate('header');
         ?>
             <div class="container">
@@ -33,17 +46,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              
-                                    <tr>
-                                        <td><?php ?> </td>
-                                        <td><?php ?></td>
-                                        <td><?php ?></td>
-                                        <td>
-                                            <button onclick="" class="btn btn-primary" type="button">Ver Archivo Modal</button>
-                                            <a class="btn btn-primary" target="_black" href="" >Ver Archivo pagina</a>
-                                        </td>
-                                    </tr>
-                               
+                            <?php foreach ($res as $val) { ?>
+                                <tr>
+                                    <td><?php echo $val['id'] ?> </td>
+                                    <td><?php echo $val['title'] ?></td>
+                                    <td><?php echo $val['description'] ?></td>
+                                    <td>
+                                        <button onclick="openModelPDF('<?php echo $val['url'] ?>')" class="btn btn-primary" type="button">Ver Archivo Modal</button>
+                                        <a class="btn btn-primary" target="_black" href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] .'//'. $val['url']; ?>" >Ver Archivo pagina</a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -101,3 +114,35 @@
                     </div>
                 </div>
             </div>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script>
+                            function onSubmitForm() {
+                                var frm = document.getElementById('form1');
+                                var data = new FormData(frm);
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.onreadystatechange = function () {
+                                    if (this.readyState == 4) {
+                                        var msg = xhttp.responseText;
+                                        if (msg == 'success') {
+                                            alert(msg);
+                                            $('#exampleModal').modal('hide')
+                                        } else {
+                                            alert(msg);
+                                        }
+
+                                    }
+                                };
+                                xhttp.open("POST", "upload.php", true);
+                                xhttp.send(data);
+                                $('#form1').trigger('reset');
+                            }
+                            function openModelPDF(url) {
+                                $('#modalPdf').modal('show');
+                                $('#iframePDF').attr('src','<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '//'; ?>'+url);
+                            }
+        </script>
+
+    </body>
+</html>

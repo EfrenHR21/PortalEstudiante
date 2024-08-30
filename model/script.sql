@@ -2,18 +2,18 @@ drop database if exists BDPortal;
 create database BDPortal;
 use BDPortal;
 
-drop table usuario,
+drop table if exists usuario;
 create table usuario(
-    codUsu int primary key auto_increment not null,
-    nombreUsu varchar(50) not null,
-    password varchar(50) not null
+    `codUsu` int primary key auto_increment not null,
+   `nombreUsu`varchar(50) not null,
+    `password` varchar(50) not null
 );
 
-drop table docente,
+drop table if exists docente;
 create table docente(
-    codDoc int primary key auto_increment not null,
-    nombreDoc varchar(50) not null,
-    password varchar(50) not null
+    `codDoc` int primary key auto_increment not null,
+    `nombreDoc` varchar(50) not null,
+    `password` varchar(50) not null
 );
 
 insert into docente(codDoc, nombreDoc, password) values
@@ -29,15 +29,15 @@ insert into usuario(codUsu,nombreUsu,password) values
 
 
 
-drop table pdf,
-create table pdf(
-    idPdf int primary key auto_increment not null,
-    nombrePdf varchar(50) not null,
-    descripcionPdf varchar(200) not null,
-    archivo varchar(500) not null,
-    type varchar(10) not null
-);
-
+drop table if exists files;
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `url` varchar(500) DEFAULT NULL,
+  `type` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 
 

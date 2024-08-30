@@ -16,7 +16,7 @@ if (!empty($_POST["btn_login"])){
         }else{
             if ($teacher->teacherExists($userForm,$passForm)){
                 $teacher->setCurrentTeacher($userForm);
-                header("location:../view/reg.php");    
+                header("location:subir.php");    
             }else{
                 echo '<div class="alert alert-danger">ACCESO DENEGADO</div>';
             }
@@ -24,4 +24,3 @@ if (!empty($_POST["btn_login"])){
     }
 }
 
-?>
